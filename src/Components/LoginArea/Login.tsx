@@ -58,7 +58,7 @@ function Login(): JSX.Element {
 
                                 <option value="ADMINISTRATOR">ADMINISTRATOR</option>
                                 <option value="COMPANY">COMPANY</option>
-                                <option value="CUSTOMERNPMnpm">CUSTOMER</option>
+                                <option value="CUSTOMER">CUSTOMER</option>
                             </select>
                         </div>
 
