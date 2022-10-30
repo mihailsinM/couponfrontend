@@ -56,11 +56,9 @@ function Login(): JSX.Element {
 
                             <select {...register("clientType")}>
 
-                                
-
-
-
-
+                                <option value="ADMINISTRATOR">ADMINISTRATOR</option>
+                                <option value="COMPANY">COMPANY</option>
+                                <option value="CUSTOMERNPMnpm">CUSTOMER</option>
                             </select>
                         </div>
 
