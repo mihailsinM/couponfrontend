@@ -1,7 +1,7 @@
 
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { CLIENT_TYPE, Credentials } from "../Models/Credentials";
+import { CLIENT_TYPE, Credentials } from "../models/Credentials";
 import authService from "../Service/AuthService";
 import notificationService from "../Service/NotificationService";
 import authStore from "../States/AuthState";

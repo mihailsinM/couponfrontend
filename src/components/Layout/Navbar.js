@@ -4,7 +4,7 @@ import authService from '../Service/AuthService';
 import notificationService from '../Service/NotificationService';
 import { Button } from "@mui/material";
 import authStore from '../States/AuthState';
-import { CLIENT_TYPE } from '../Models/Credentials';
+import { CLIENT_TYPE } from '../models/Credentials';
 
 
 export default function Navbar() {

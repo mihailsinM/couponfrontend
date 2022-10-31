@@ -1,9 +1,9 @@
 import jwtDecode from "jwt-decode";
 import { createStore } from "redux";
-import { AdminModel } from "../Models/AdminModel";
-import { CompanyModel } from "../Models/CompanyModel";
-import { Credentials } from "../Models/Credentials";
-import { CustomerModel } from "../Models/CustomerModel";
+import { AdminModel } from "../models/AdminModel";
+import { CompanyModel } from "../models/CompanyModel";
+import { Credentials } from "../models/Credentials";
+import { CustomerModel } from "../models/CustomerModel";
 
 export enum AuthActionsTypes {
     Login, Register, Logout

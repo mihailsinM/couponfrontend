@@ -1,28 +1,23 @@
 import React from 'react';
 import './App.css';
-
-
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
-import Navbar from './Components/Layout/Navbar';
-import HomeCastomer from './Components/HomeArea/HomeCastomer';
+import Navbar from './components/Layout/Navbar';
+import HomeCastomer from './components/HomeArea/HomeCastomer';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import AddCustomer from './Components/CustomerArea/AddCustomer';
-import EditCustomer from './Components/CustomerArea/EditCustomer';
-import ViewCustomer from './Components/CustomerArea/ViewCustomer';
-import AddCoupon from './Components/CouponArea/AddCoupon';
-import HomeCoupon from './Components/HomeArea/HomeCoupon';
-import EditCoupon from "./Components/CouponArea/EditCoupon"
-import ViewCoupon from './Components/CouponArea/ViewCoupon';
-import AddCompany from "./Components/CompanyArea/AddCompany"
-import HomeCompany from './Components/HomeArea/HomeCompany';
-import EditCompany from './Components/CompanyArea/EditCompany';
-import ViewCompany from './Components/CompanyArea/ViewCompany';
-import Login from './Components/LoginArea/Login';
-import Register from './Components/Register/RegisterCompany';
-import HomeAdmin from "./Components/HomeArea/HomeAdmin";
-
-
-
+import AddCustomer from './components/CustomerArea/AddCustomer';
+import EditCustomer from './components/CustomerArea/EditCustomer';
+import ViewCustomer from './components/CustomerArea/ViewCustomer';
+import AddCoupon from './components/CouponArea/AddCoupon';
+import HomeCoupon from './components/HomeArea/HomeCoupon';
+import EditCoupon from "./components/CouponArea/EditCoupon"
+import ViewCoupon from './components/CouponArea/ViewCoupon';
+import AddCompany from "./components/CompanyArea/AddCompany"
+import HomeCompany from './components/HomeArea/HomeCompany';
+import EditCompany from './components/CompanyArea/EditCompany';
+import ViewCompany from './components/CompanyArea/ViewCompany';
+import Login from './components/LoginArea/Login';
+import Register from './components/Register/RegisterCompany';
+import HomeAdmin from "./components/HomeArea/HomeAdmin";
 
 function App() {
   return (
@@ -31,7 +26,6 @@ function App() {
         <Navbar />
 
         <Routes>
-
           <Route path="/register" element={<Register />} />
           <Route exact path='/login' element={<Login />} />
 
@@ -53,10 +47,8 @@ function App() {
           {/*--------------------------------------------------------------------Admin*/}
           <Route exact path='/admin/companies' element={<HomeAdmin />} />
         </Routes>
+
       </Router>
-
-
-
 
     </div>
   );

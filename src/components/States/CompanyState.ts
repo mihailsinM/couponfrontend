@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import { CompanyModel } from "../Models/CompanyModel";
+import { CompanyModel } from "../models/CompanyModel";
 
 
 export class CompanyState {

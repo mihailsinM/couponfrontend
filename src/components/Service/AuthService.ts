@@ -1,6 +1,6 @@
 import axios from "axios";
-import { CompanyModel } from "../Models/CompanyModel";
-import { Credentials } from "../Models/Credentials";
+import { CompanyModel } from "../models/CompanyModel";
+import { Credentials } from "../models/Credentials";
 import authStore, { loginAction, logoutAction, registerAction } from "../States/AuthState";
 import appConfig from "../Util/Config";
 
