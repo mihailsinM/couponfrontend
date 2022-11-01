@@ -1,9 +1,9 @@
-import jwtDecode from "jwt-decode";
-import { createStore } from "redux";
-import { AdminModel } from "../models/AdminModel";
-import { CompanyModel } from "../models/CompanyModel";
-import { Credentials } from "../models/Credentials";
-import { CustomerModel } from "../models/CustomerModel";
+import {createStore} from "redux";
+import {AdminModel} from "../models/AdminModel";
+import {CompanyModel} from "../models/CompanyModel";
+import {Credentials} from "../models/Credentials";
+import {CustomerModel} from "../models/CustomerModel";
+import jwtDecode from 'jwt-decode';
 
 export enum AuthActionsTypes {
     Login, Register, Logout
@@ -14,35 +14,28 @@ export interface AuthActions {
     payload?: any
 }
 
-export class CompanyState {
-    public token: string;
-    // public company: CompanyModel;
-    // public admin: AdminModel;
-    // public customer: CustomerModel;
-    public creds: Credentials;
-
-    constructor() {
-        if(localStorage.getItem("token")){
-            this.token = localStorage.getItem("token");
-            
-        }
-    }
+export interface CompanyState {
+    token: string;
+    company: CompanyModel;
+    admin: AdminModel;
+    customer: CustomerModel;
+    credentials: Credentials;
 }
 
 export function loginAction(token: string) {
-    return { type: AuthActionsTypes.Login, payload: token }
+    return {type: AuthActionsTypes.Login, payload: token}
 }
 
 export function registerAction(token: string) {
-    return { type: AuthActionsTypes.Register, payload: token }
+    return {type: AuthActionsTypes.Register, payload: token}
 }
 
 export function logoutAction() {
-    return { type: AuthActionsTypes.Logout }
+    return {type: AuthActionsTypes.Logout}
 }
 
-export function reducer(currentState: CompanyState, action: AuthActions) {
-    const newState = { ...currentState };
+export function reducer(currentState: CompanyState, action: AuthActions): CompanyState {
+    const newState: CompanyState = {...currentState};
 
     switch (action.type) {
         case AuthActionsTypes.Login:
@@ -50,11 +43,11 @@ export function reducer(currentState: CompanyState, action: AuthActions) {
             newState.token = action.payload;
             localStorage.setItem("token", newState.token)
             const tokenObject: Credentials = jwtDecode(newState.token);
-            newState.creds = tokenObject;
+            newState.credentials = tokenObject;
             break;
         case AuthActionsTypes.Logout:
             newState.token = null;
-            newState.creds = null;
+            newState.credentials = null;
             localStorage.removeItem("token");
             break;
     }

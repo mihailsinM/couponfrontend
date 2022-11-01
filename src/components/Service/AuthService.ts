@@ -1,7 +1,7 @@
 import axios from "axios";
-import { CompanyModel } from "../models/CompanyModel";
-import { Credentials } from "../models/Credentials";
-import authStore, { loginAction, logoutAction, registerAction } from "../States/AuthState";
+import {CompanyModel} from "../models/CompanyModel";
+import {Credentials} from "../models/Credentials";
+import authStore, {loginAction, logoutAction, registerAction} from "../States/AuthState";
 import appConfig from "../Util/Config";
 
 class AuthService {

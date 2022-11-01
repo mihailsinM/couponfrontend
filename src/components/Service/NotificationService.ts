@@ -1,32 +1,33 @@
-import { Notyf } from "notyf";
+import {Notyf} from "notyf";
+import 'notyf/notyf.min.css';
 
-class NotificationService{
-    private notify = new Notyf({duration: 3000, position: {y: "top", x:"center"}});
+class NotificationService {
+    private notify = new Notyf({duration: 10000, position: {y: "top", x: "right"}, dismissible: true});
 
-    public success(msg: string){
+    public success(msg: string) {
         this.notify.success(msg);
     }
 
-    public error(err: any){
+    public error(err: any) {
         const msg = this.errorHandler(err);
         this.notify.error(msg);
     }
 
-    private errorHandler(err: any){
-        if(typeof err === "string")
+    private errorHandler(err: any) {
+        if (typeof err === "string")
             return err;
 
-        if(typeof err.response?.data === "string")
+        if (typeof err.response?.data === "string")
             return err.response.data;
 
-        if(Array.isArray(err.response?.data))
+        if (Array.isArray(err.response?.data))
             return err.response.data[0];
 
-        if(typeof err.message === "string")
+        if (typeof err.message === "string")
             return err.message;
 
         return "Oops! Error occurred, try again...";
-        
+
     }
 }
 

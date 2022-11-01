@@ -7,16 +7,16 @@ import authStore from "../States/AuthState";
 
 function Login(): JSX.Element {
 
-    const { register, handleSubmit } = useForm<Credentials>();
+    const {register, handleSubmit} = useForm<Credentials>();
     const navigate = useNavigate();
 
     function send(cred: Credentials) {
         authService.login(cred)
             .then(() => {
-                notificationService.success("Hello " + authStore.getState().company.clientType);
+                notificationService.success("Hello " + authStore.getState().credentials.clientType);
                 navigate("/companies")
             })
-            .catch(err => notificationService.error(err))
+            .catch(err => notificationService.error(err));
     }
 
     return (
@@ -57,7 +57,6 @@ function Login(): JSX.Element {
                                 <option value="CUSTOMER">CUSTOMER</option>
                             </select>
                         </div>
-
 
 
                         <button className='btn btn-outline-primary'>Sign In</button>
