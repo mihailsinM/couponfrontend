@@ -1,8 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 import appConfig from '../Util/Config';
-import { Link, useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 
 export default function HomeCastomer() {
 

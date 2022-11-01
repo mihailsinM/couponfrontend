@@ -1,12 +1,9 @@
-
-import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { CLIENT_TYPE, Credentials } from "../models/Credentials";
+import {useForm} from "react-hook-form";
+import {Link, useNavigate} from "react-router-dom";
+import {Credentials} from "../models/Credentials";
 import authService from "../Service/AuthService";
 import notificationService from "../Service/NotificationService";
 import authStore from "../States/AuthState";
-
-
 
 function Login(): JSX.Element {
 
@@ -16,7 +13,7 @@ function Login(): JSX.Element {
     function send(cred: Credentials) {
         authService.login(cred)
             .then(() => {
-                notificationService.success("Hello " + authStore.getState().creds.clientType);
+                notificationService.success("Hello " + authStore.getState().company.clientType);
                 navigate("/companies")
             })
             .catch(err => notificationService.error(err))
@@ -55,7 +52,6 @@ function Login(): JSX.Element {
                             <label htmlFor="clientType" className='form-label'>ClientType:</label>
 
                             <select {...register("clientType")}>
-
                                 <option value="ADMINISTRATOR">ADMINISTRATOR</option>
                                 <option value="COMPANY">COMPANY</option>
                                 <option value="CUSTOMER">CUSTOMER</option>

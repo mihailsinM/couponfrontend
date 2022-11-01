@@ -31,7 +31,7 @@ export default function Navbar() {
                     </>
                 }
                 {
-                    (authStore.getState().token && authStore.getState().creds.clientType === CLIENT_TYPE.ADMINISTRATOR) &&
+                    (authStore.getState().token && authStore.getState().company.clientType === CLIENT_TYPE.ADMINISTRATOR) &&
                      
                     <>
                         <Link className="btn btn-outline-light m-2" to="/addcustomer">Add Customer</Link>
@@ -42,7 +42,7 @@ export default function Navbar() {
                 }
 
                  {
-                    (authStore.getState().token && authStore.getState().creds.clientType === CLIENT_TYPE.COMPANY) &&
+                    (authStore.getState().token && authStore.getState().company.clientType === CLIENT_TYPE.COMPANY) &&
                     <>
                         <Link className="btn btn-outline-light m-2" to="/addcustomer">Add Customer</Link>
                         <Link className="btn btn-outline-light m-2" to="/addcoupon">Add Coupon</Link>
@@ -51,7 +51,7 @@ export default function Navbar() {
                 }
 
                 {
-                    (authStore.getState().token && authStore.getState().creds.clientType === CLIENT_TYPE.CUSTOMER) &&
+                    (authStore.getState().token && authStore.getState().company.clientType === CLIENT_TYPE.CUSTOMER) &&
                     <>
                         <Link className="btn btn-outline-light m-2" to="/addcoupon">Add Coupon</Link>
                         <Button variant="outlined" color="secondary" onClick={logout}>Logout</Button>

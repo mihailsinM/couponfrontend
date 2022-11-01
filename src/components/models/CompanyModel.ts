@@ -1,14 +1,9 @@
+import {CLIENT_TYPE} from './Credentials';
+
 export class CompanyModel {
     public id: number;
     public name: string;
     public email: string;
     public password: string;
-
-    // constructor(name: string, email: string, password: string) {
-    //     this.name=name;
-    //     this.email=email;
-    //     this.password=password;
-    // }
-
-
+    public clientType: CLIENT_TYPE;
 }

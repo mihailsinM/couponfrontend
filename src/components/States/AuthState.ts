@@ -15,7 +15,6 @@ export interface AuthActions {
 }
 
 export class CompanyState {
-
     public token: string;
     public company: CompanyModel;
     public admin: AdminModel;
