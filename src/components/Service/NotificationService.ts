@@ -2,7 +2,7 @@ import {Notyf} from "notyf";
 import 'notyf/notyf.min.css';
 
 class NotificationService {
-    private notify = new Notyf({duration: 10000, position: {y: "top", x: "right"}, dismissible: true});
+    private notify = new Notyf({duration: 5000, position: {y: "top", x: "right"}, dismissible: true});
 
     public success(msg: string) {
         this.notify.success(msg);

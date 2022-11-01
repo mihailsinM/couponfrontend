@@ -1,11 +1,13 @@
 import axios from 'axios';
-import React, {useState} from 'react'
-import {Link, useNavigate} from 'react-router-dom';
-import appConfig from '../Util/Config';
+import React, {useEffect, useState} from 'react'
+import {Link, useNavigate, useParams} from 'react-router-dom';
 
-export default function AddCustomer() {
+
+export default function EditCustomer() {
 
     let navigate = useNavigate();
+
+    const {id} = useParams();
 
     const [user, setUser] = useState({
         first_name: "",
@@ -16,20 +18,31 @@ export default function AddCustomer() {
 
     const {first_name, last_name, email, password} = user;
 
-    const onInputChange = (e) => {
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setUser({...user, [e.target.name]: e.target.value});
+
     }
 
-    const onSubmit = async (e) => {
+    useEffect(() => {
+        loadUser();
+    }, []);
+
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        await axios.post(appConfig.ccustomerAddlUrl, user)
+        await axios.put(`http://localhost:8080/customer/${id}`, user);
         navigate("/");
     };
+
+    const loadUser = async () => {
+        const result = await axios.get(`http://localhost:8080/customer/${id}`)
+        setUser(result.data)
+    }
+
 
     return (<div className='container'>
             <div className='row'>
                 <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
-                    <h2 className='text-center m-1'>Register Customer</h2>
+                    <h2 className='text-center m-1'>Edit Customer</h2>
 
                     <form onSubmit={(e) => onSubmit(e)}>
                         <div className='mb-1'>
@@ -69,7 +82,7 @@ export default function AddCustomer() {
                                 onChange={(e) => onInputChange(e)}
                             />
                         </div>
-                        <div className='mb-3'>
+                        <div className='mb-1'>
                             <label htmlFor='Password' className='form-label'>
                             </label>
                             <input
@@ -93,6 +106,5 @@ export default function AddCustomer() {
                 </div>
             </div>
         </div>
-
     );
 }

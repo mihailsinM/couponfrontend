@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import Navbar from './components/Layout/Navbar';
-import HomeCastomer from './components/HomeArea/HomeCastomer';
+import HomeCustomer from './components/HomeArea/HomeCustomer';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 import AddCustomer from './components/CustomerArea/AddCustomer';
 import EditCustomer from './components/CustomerArea/EditCustomer';
@@ -24,29 +24,27 @@ function App() {
         <div className="App">
             <Router>
                 <Navbar/>
-
                 <Routes>
-                    <Route exact path="/register" element={<Register/>}/>
-                    <Route exact path='/login' element={<Login/>}/>
+                    <Route path="/register" element={<Register/>}/>
+                    <Route path='/login' element={<Login/>}/>
                     {/* ---------------------------------------------------------------------CUSTOMER */}
-                    <Route exact path='/' element={<HomeCastomer/>}/>
-                    <Route exact path="/addcustomer" element={<AddCustomer/>}/>
-                    <Route exact path="/editcustomer/:id" element={<EditCustomer/>}/>
-                    <Route exact path="/customer/:id" element={<ViewCustomer/>}/>
+                    <Route path='/' element={<HomeCustomer/>}/>
+                    <Route path="/addcustomer" element={<AddCustomer/>}/>
+                    <Route path="/editcustomer/:id" element={<EditCustomer/>}/>
+                    <Route path="/customer/:id" element={<ViewCustomer/>}/>
                     {/* -----------------------------------------------------------------------COUPON */}
-                    <Route exact path='/coupons' element={<HomeCoupon/>}/>
-                    <Route exact path="/addcoupon" element={<AddCoupon/>}/>
-                    <Route exact path="/editcoupon/:id" element={<EditCoupon/>}/>
-                    <Route exact path="/coupon/:id" element={<ViewCoupon/>}/>
+                    <Route path='/coupons' element={<HomeCoupon/>}/>
+                    <Route path="/addcoupon" element={<AddCoupon/>}/>
+                    <Route path="/editcoupon/:id" element={<EditCoupon/>}/>
+                    <Route path="/coupon/:id" element={<ViewCoupon/>}/>
                     {/* ----------------------------------------------------------------------COMPANY */}
-                    <Route exact path='/companies' element={<HomeCompany/>}/>
-                    <Route exact path="/addcompany" element={<AddCompany/>}/>
-                    <Route exact path="/editcompany/:id" element={<EditCompany/>}/>
-                    <Route exact path="/company/:id" element={<ViewCompany/>}/>
+                    <Route path='/companies' element={<HomeCompany/>}/>
+                    <Route path="/addcompany" element={<AddCompany/>}/>
+                    <Route path="/editcompany/:id" element={<EditCompany/>}/>
+                    <Route path="/company/:id" element={<ViewCompany/>}/>
                     {/*--------------------------------------------------------------------Admin*/}
-                    <Route exact path='/admin/companies' element={<HomeAdmin/>}/>
+                    <Route path='/admin/companies' element={<HomeAdmin/>}/>
                 </Routes>
-
             </Router>
 
         </div>

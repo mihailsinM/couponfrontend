@@ -1,54 +1,43 @@
 import axios from 'axios';
-import React from 'react'
-import { useState, useEffect } from "react"
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import React, {useState} from "react";
+import {Link, useNavigate} from 'react-router-dom';
+import appConfig from '../Util/Config';
 
-export default function EditCustomer() {
+
+export default function AddCoupon() {
 
     let navigate = useNavigate();
-
-    const { id } = useParams();
 
     const [coupon, setCoupon] = useState({
         title: "",
         description: "",
         category: "",
-        startDate: Date,
-        endDate: Date,
+        startDate: 0,
+        endDate: 0,
         price: 0,
         amount: 0,
         image: "",
-        companyid: 0
+        companyId: 0
     });
 
-    const { title, description, category, startDate, endDate, price, amount, image, companyid } = coupon;
+    const {title, description, category, startDate, endDate, price, amount, image, companyId} = coupon;
 
-    const onInputChange = (e) => {
-        setCoupon({ ...coupon, [e.target.name]: e.target.value });
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setCoupon({...coupon, [e.target.name]: e.target.value});
 
     };
 
-    useEffect(() => {
-        loadCoupon();
-    }, []);
-
-    const onSubmit = async (e) => {
+    const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        await axios.put(`http://localhost:8080/coupon/${id}`, coupon);
+        await axios.post(appConfig.couponAddUrl, coupon)
         navigate("/coupons");
     };
 
-    const loadCoupon = async () => {
-        const result = await axios.get(`http://localhost:8080/coupon/${id}`)
-        setCoupon(result.data)
-    }
 
-
-    return (
-        <div className='container'>
+    return (<div className='container'>
             <div className='row'>
                 <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
-                    <h4 className='text-center m-1'>Edit Coupon</h4>
+                    <h2 className=' text-center m-1'>Add Coupon</h2>
 
                     <form onSubmit={(e) => onSubmit(e)}>
                         <div className='mb-1'>
@@ -62,7 +51,6 @@ export default function EditCustomer() {
                                 value={title}
                                 onChange={(e) => onInputChange(e)}
                             />
-
                         </div>
 
                         <div className='mb-1'>
@@ -137,19 +125,18 @@ export default function EditCustomer() {
                                 onChange={(e) => onInputChange(e)}
                             />
                         </div>
-                        <div className='mb-1'>
+                        <div className='mb-3'>
                             <label htmlFor='Image' className='form-label'>Image.
                             </label>
                             <input
                                 type={"text"}
                                 className="form-control"
-                                placeholder='Image'
+                                placeholder='Enter Image'
                                 name='image'
                                 value={image}
                                 onChange={(e) => onInputChange(e)}
                             />
                         </div>
-
                         <div className='mb-3'>
                             <label htmlFor='Company' className='form-label'>Company id.
                             </label>
@@ -158,10 +145,11 @@ export default function EditCustomer() {
                                 className="form-control"
                                 placeholder='Company-id'
                                 name='companyid'
-                                value={companyid}
+                                value={companyId}
                                 onChange={(e) => onInputChange(e)}
                             />
                         </div>
+
 
                         <button type='submit' className='btn btn-outline-primary'>
                             Submit
