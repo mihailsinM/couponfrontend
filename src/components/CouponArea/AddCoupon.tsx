@@ -3,7 +3,6 @@ import React, {useState} from "react";
 import {Link, useNavigate} from 'react-router-dom';
 import appConfig from '../Util/Config';
 
-
 export default function AddCoupon() {
 
     let navigate = useNavigate();
@@ -12,8 +11,8 @@ export default function AddCoupon() {
         title: "",
         description: "",
         category: "",
-        startDate: 0,
-        endDate: 0,
+        startDate: "",
+        endDate: "",
         price: 0,
         amount: 0,
         image: "",
@@ -24,22 +23,20 @@ export default function AddCoupon() {
 
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setCoupon({...coupon, [e.target.name]: e.target.value});
-
     };
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        await axios.post(appConfig.couponAddUrl, coupon)
+        e.preventDefault();
+        await axios.post(appConfig.couponAddUrl, coupon);
         navigate("/coupons");
     };
-
 
     return (<div className='container'>
             <div className='row'>
                 <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
                     <h2 className=' text-center m-1'>Add Coupon</h2>
 
-                    <form onSubmit={(e) => onSubmit(e)}>
+                    <form onSubmit={onSubmit}>
                         <div className='mb-1'>
                             <label htmlFor='Title' className='form-label'>Title.
                             </label>
@@ -49,7 +46,7 @@ export default function AddCoupon() {
                                 placeholder='Enter title'
                                 name='title'
                                 value={title}
-                                onChange={(e) => onInputChange(e)}
+                                onChange={onInputChange}
                             />
                         </div>
 
@@ -73,6 +70,8 @@ export default function AddCoupon() {
                                 className="form-control"
                                 placeholder='Enter category'
                                 name='category'
+                                max={4}
+                                maxLength={1}
                                 value={category}
                                 onChange={(e) => onInputChange(e)}
                             />
@@ -138,13 +137,13 @@ export default function AddCoupon() {
                             />
                         </div>
                         <div className='mb-3'>
-                            <label htmlFor='Company' className='form-label'>Company id.
+                            <label htmlFor='Company' className='form-label'>Company ID
                             </label>
                             <input
                                 type={"number"}
                                 className="form-control"
                                 placeholder='Company-id'
-                                name='companyid'
+                                name='companyId'
                                 value={companyId}
                                 onChange={(e) => onInputChange(e)}
                             />
